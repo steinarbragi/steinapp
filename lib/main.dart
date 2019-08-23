@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './screens/login_signup.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'STRÆTÓ',
+      title: 'STEINAPP',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'STRÆTÓ'),
+      home: MyHomePage(title: 'STEINAPP'),
     );
   }
 }
@@ -57,6 +58,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void login() {
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginSignUp()),
+  );
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -70,7 +78,15 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+        actions: <Widget>[
+            // action button
+            IconButton(
+              icon: Icon(Icons.account_circle),
+              onPressed: () {
+                login();
+              },
+            ),
+      ]),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -104,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.check),
+        child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
