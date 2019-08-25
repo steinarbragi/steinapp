@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import './login_signup.dart';
+import 'package:location/location.dart';
+
 
 
 class MapSample extends StatefulWidget {
@@ -18,16 +21,40 @@ class MapSampleState extends State<MapSample> {
   );
 
   static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
+      //bearing: 192.8334901395799,
+      target: LatLng(-14.391183,65.258885),
+      //tilt: 29.440717697143555,
       zoom: 19.151926040649414);
+
+  void login() {
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginSignUp()),
+  );
+  }
+
+  void getCurrentLocation() {
+    
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text('Map'),
+        actions: <Widget>[
+            // action button
+            IconButton(
+              icon: Icon(Icons.account_circle),
+              onPressed: () {
+                login();
+              },
+            ),
+      ]),
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
@@ -35,8 +62,8 @@ class MapSampleState extends State<MapSample> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
+        label: Text('To the bar!'),
+        icon: Icon(Icons.local_bar),
       ),
     );
   }
