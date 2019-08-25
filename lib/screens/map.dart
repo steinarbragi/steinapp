@@ -21,12 +21,6 @@ class MapSampleState extends State<MapSample> {
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
-      //bearing: 192.8334901395799,
-      target: LatLng(-14.391183,65.258885),
-      //tilt: 29.440717697143555,
-      zoom: 19.151926040649414);
-
   void login() {
       Navigator.push(
       context,
