@@ -6,6 +6,8 @@ import './login_signup.dart';
 import '../models/user_location.dart';
 import '../services/location.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
 
 
 
@@ -39,8 +41,14 @@ class MapSampleState extends State<MapSample> {
     
   }
 
+  String _mapStyle;
+
+
   @override
   Widget build(BuildContext context) {
+    rootBundle.loadString('assets/map_style.json').then((string) {
+      _mapStyle = string;
+    });
     return new Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -59,7 +67,9 @@ class MapSampleState extends State<MapSample> {
         mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
+          controller.setMapStyle(_mapStyle);
           _controller.complete(controller);
+
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -77,7 +87,7 @@ class MapSampleState extends State<MapSample> {
       //bearing: 192.8334901395799,
       target: LatLng(userLocation.latitude,userLocation.longitude),
       //tilt: 29.440717697143555,
-      zoom: 19.151926040649414);
+      zoom: 17.151926040649414);
 
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(_Home));
