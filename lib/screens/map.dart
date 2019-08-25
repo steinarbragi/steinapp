@@ -66,17 +66,18 @@ class MapSampleState extends State<MapSample> {
       body: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex,
+        myLocationEnabled: true,
         onMapCreated: (GoogleMapController controller) {
           controller.setMapStyle(_mapStyle);
           _controller.complete(controller);
 
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
+      /*floatingActionButton: FloatingActionButton.extended(
         onPressed: _goHome,
         label: Text('Current Location'),
         icon: Icon(Icons.my_location),
-      ),
+      ),*/
     );
   }
 
