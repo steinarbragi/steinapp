@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:steinapp/screens/map.dart';
 import './screens/login_signup.dart';
 import 'models/user_location.dart';
 import 'services/location.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.red,
         ),
-        home: HomeView(),
+        home: MapSample(),
       )
     );
   }
@@ -45,6 +46,8 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);

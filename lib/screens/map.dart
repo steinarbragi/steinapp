@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import './login_signup.dart';
-import 'package:location/location.dart';
+import '../models/user_location.dart';
+import '../services/location.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -61,11 +63,24 @@ class MapSampleState extends State<MapSample> {
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text('To the bar!'),
-        icon: Icon(Icons.local_bar),
+        onPressed: _goHome,
+        label: Text('Current Location'),
+        icon: Icon(Icons.my_location),
       ),
     );
+  }
+
+  Future<void> _goHome() async {
+      var userLocation = Provider.of<UserLocation>(context);
+
+      CameraPosition _Home = CameraPosition(
+      //bearing: 192.8334901395799,
+      target: LatLng(userLocation.latitude,userLocation.longitude),
+      //tilt: 29.440717697143555,
+      zoom: 19.151926040649414);
+
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(_Home));
   }
 
   Future<void> _goToTheLake() async {
