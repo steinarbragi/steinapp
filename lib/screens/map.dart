@@ -3,13 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import './login_signup.dart';
-import '../models/user_location.dart';
-import '../services/location.dart';
-import 'package:provider/provider.dart';
+//import '../models/user_location.dart';
+//import '../services/location.dart';
+//import 'package:provider/provider.dart';
 import 'package:flutter/services.dart' show rootBundle;
-
-
-
 
 class MapSample extends StatefulWidget {
   @override
@@ -37,12 +34,7 @@ class MapSampleState extends State<MapSample> {
   );
   }
 
-  void getCurrentLocation() {
-    
-  }
-
   String _mapStyle;
-
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +73,8 @@ class MapSampleState extends State<MapSample> {
     );
   }
 
+  /*
+
   Future<void> _goHome() async {
       var userLocation = Provider.of<UserLocation>(context);
 
@@ -98,4 +92,5 @@ class MapSampleState extends State<MapSample> {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
+  */
 }

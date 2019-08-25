@@ -26,6 +26,9 @@ dependencies:
   google_maps_flutter: ^0.5.20
   location: ^2.3.5
   provider: ^3.0.0
+  flutter_google_places: ^0.2.3
+  bloc: ^0.15.0
+  flutter_bloc: ^0.21.0
 
 
 dev_dependencies:
