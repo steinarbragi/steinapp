@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './screens/login_signup.dart';
+import './screens/map.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'STEINAPP'),
+      home: MapSample(),
     );
   }
 }
